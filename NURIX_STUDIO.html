@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NURIX STUDIO — Plan de Lancement</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0a0a0f;
+        --paper: #f5f4ef;
+        --accent: #ff4d1c;
+        --accent2: #1c4dff;
+        --muted: #8a8880;
+        --card: #ffffff;
+        --border: #e0ddd6;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      /* HEADER */
+      header {
+        background: var(--ink);
+        color: var(--paper);
+        padding: 48px 48px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      header::before {
+        content: "NX";
+        position: absolute;
+        right: -20px;
+        top: -30px;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 200px;
+        color: rgba(255, 255, 255, 0.04);
+        letter-spacing: -10px;
+        pointer-events: none;
+      }
+      .tag {
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 3px;
+        margin-bottom: 16px;
+      }
+      header h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+      header h1 span {
+        color: var(--accent);
+      }
+      header p {
+        color: rgba(245, 244, 239, 0.55);
+        font-size: 15px;
+        max-width: 420px;
+      }
+
+      /* LAYOUT */
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 32px;
+        display: grid;
+        gap: 32px;
+      }
+
+      /* SECTION TITLES */
+      .section-title {
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* CARDS */
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+      }
+
+      /* SERVICES GRID */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .service-card {
+        background: var(--paper);
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        padding: 22px 20px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        cursor: default;
+      }
+      .service-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+      .service-icon {
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+      .service-card h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+      .service-card p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ORG CHART */
+      .org {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+      .org-node {
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 10px;
+        padding: 14px 28px;
+        text-align: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        position: relative;
+        min-width: 180px;
+      }
+      .org-node.accent {
+        background: var(--accent);
+        color: white;
+      }
+      .org-node.secondary {
+        background: var(--paper);
+        border: 1.5px solid var(--border);
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .org-node small {
+        display: block;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        font-size: 11px;
+        opacity: 0.65;
+        margin-top: 3px;
+      }
+      .org-line {
+        width: 2px;
+        height: 24px;
+        background: var(--border);
+      }
+      .org-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .org-branch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+      .org-branch .org-line {
+        height: 20px;
+      }
+
+      /* PHASES / ROADMAP */
+      .phases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .phase {
+        border-radius: 10px;
+        padding: 22px;
+        border: 1.5px solid var(--border);
+        background: var(--paper);
+        position: relative;
+      }
+      .phase-num {
+        font-family: "Syne", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--border);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .phase h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .phase ul {
+        list-style: none;
+      }
+      .phase ul li {
+        font-size: 13px;
+        color: var(--muted);
+        padding: 4px 0;
+        padding-left: 16px;
+        position: relative;
+      }
+      .phase ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 11px;
+      }
+      .phase.active {
+        border-color: var(--accent);
+      }
+      .phase.active .phase-num {
+        color: rgba(255, 77, 28, 0.15);
+      }
+      .phase-badge {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        background: var(--accent);
+        color: white;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 20px;
+      }
+
+      /* OBJECTIVES CHECKLIST */
+      .checklist {
+        display: grid;
+        gap: 10px;
+      }
+      .check-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border: 1.5px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--paper);
+        user-select: none;
+      }
+      .check-item:hover {
+        border-color: var(--accent2);
+      }
+      .check-item.done {
+        background: #f0f4ff;
+        border-color: var(--accent2);
+      }
+      .check-item.done .check-label {
+        text-decoration: line-through;
+        color: var(--muted);
+      }
+      .check-box {
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--border);
+        border-radius: 5px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        transition: all 0.2s;
+      }
+      .check-item.done .check-box {
+        background: var(--accent2);
+        border-color: var(--accent2);
+        color: white;
+      }
+      .check-label {
+        font-size: 14px;
+        font-weight: 500;
+        flex: 1;
+      }
+      .check-cat {
+        font-size: 11px;
+        color: var(--muted);
+        background: var(--border);
+        padding: 2px 8px;
+        border-radius: 20px;
+      }
+
+      /* VISION */
+      .vision-box {
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 12px;
+        padding: 36px;
+        position: relative;
+        overflow: hidden;
+      }
+      .vision-box::after {
+        content: '"';
+        position: absolute;
+        right: 24px;
+        bottom: -30px;
+        font-size: 160px;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.05);
+        line-height: 1;
+      }
+      .vision-box p {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(18px, 2.5vw, 26px);
+        font-weight: 600;
+        line-height: 1.4;
+        max-width: 600px;
+      }
+      .vision-box p span {
+        color: var(--accent);
+      }
+
+      /* PROGRESS */
+      .progress-bar-wrap {
+        margin-top: 20px;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .progress-track {
+        height: 6px;
+        background: var(--border);
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 99px;
+        transition: width 0.6s ease;
+      }
+
+      footer {
+        text-align: center;
+        padding: 32px;
+        font-size: 12px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="tag">Plan de lancement</div>
+      <h1>NURIX <span>STUDIO</span></h1>
+      <p>
+        Structure organisationnelle · Feuille de route · Objectifs clés ·
+        Services
+      </p>
+    </header>
+
+    <main>
+      <!-- VISION -->
+      <div>
+        <div class="section-title">Vision fondatrice</div>
+        <div class="vision-box">
+          <p>
+            Devenir le studio créatif & tech de référence — des
+            <span>affiches percutantes</span> aux
+            <span>logiciels sur mesure</span>, NURIX STUDIO transforme les idées
+            en expériences mémorables.
+          </p>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+        <div class="section-title">Pôles de services</div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Design Print</h3>
+            <p>
+              Affiches, flyers, identité visuelle, supports de communication.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Web Design</h3>
+            <p>Sites vitrines, landing pages, portfolios, sites e-commerce.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Développement</h3>
+            <p>
+              Logiciels sur mesure, applications web & mobile haute qualité.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Contenu & Marque</h3>
+            <p>
+              Création de contenu, branding, stratégie visuelle & notoriété.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORG CHART -->
+      <div class="card">
+        <div class="section-title">Structure organisationnelle</div>
+        <div class="org">
+          <div class="org-node accent">
+            Fondateur / Directeur<small
+              >Vision, stratégie & décisions clés</small
+            >
+          </div>
+          <div class="org-line"></div>
+          <div class="org-row">
+            <div class="org-branch">
+              <div class="org-node">
+                Pôle Créatif<small>Design Print & Visuels</small>
+              </div>
+              <div class="org-line"></div>
+              <div class="org-node secondary">Graphiste / Designer</div>
+            </div>
+            <div class="org-branch">
+              <div class="org-node">
+                Pôle Web<small>Sites & Interfaces</small>
+              </div>
+              <div class="org-line"></div>
+              <div class="org-node secondary">Web Designer / Dev Front</div>
+            </div>
+            <div class="org-branch">
+              <div class="org-node">
+                Pôle Tech<small>Logiciels & Apps</small>
+              </div>
+              <div class="org-line"></div>
+              <div class="org-node secondary">Développeur Full-Stack</div>
+            </div>
+            <div class="org-branch">
+              <div class="org-node">
+                Pôle Croissance<small>Clients & Contenu</small>
+              </div>
+              <div class="org-line"></div>
+              <div class="org-node secondary">Community / Commercial</div>
+            </div>
+          </div>
+        </div>
+        <p
+          style="
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+          "
+        >
+          💡 Au démarrage,
+          <strong>une seule personne peut occuper plusieurs pôles</strong>.
+          Cette structure est votre cap de croissance.
+        </p>
+      </div>
+
+      <!-- ROADMAP -->
+      <div>
+        <div class="section-title">Feuille de route — 3 phases</div>
+        <div class="phases">
+          <div class="phase active">
+            <div class="phase-badge">En cours</div>
+            <div class="phase-num">01</div>
+            <h3>Fondations</h3>
+            <ul>
+              <li>Clarifier la vision & valeurs</li>
+              <li>Créer logo & identité NURIX</li>
+              <li>Définir les 2–3 services prioritaires</li>
+              <li>Construire un portfolio de démo</li>
+              <li>Premiers clients gratuits (références)</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <div class="phase-num">02</div>
+            <h3>Notoriété</h3>
+            <ul>
+              <li>Publier du contenu régulièrement</li>
+              <li>Lancer le site NURIX STUDIO</li>
+              <li>Obtenir 3–5 témoignages clients</li>
+              <li>Réseaux sociaux actifs</li>
+              <li>Premiers revenus / contrats payants</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <div class="phase-num">03</div>
+            <h3>Consolidation</h3>
+            <ul>
+              <li>Fixer une grille tarifaire claire</li>
+              <li>Recruter ou sous-traiter</li>
+              <li>Lancer un service "logiciel premium"</li>
+              <li>Partenariats stratégiques</li>
+              <li>Automatiser les process clés</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKLIST OBJECTIVES -->
+      <div>
+        <div class="section-title">
+          Objectifs prioritaires — cliquez pour cocher ✓
+        </div>
+        <div class="checklist" id="checklist">
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Rédiger la mission & les valeurs de NURIX STUDIO
+            </div>
+            <span class="check-cat">Vision</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Créer l'identité visuelle officielle (logo, couleurs, typographie)
+            </div>
+            <span class="check-cat">Branding</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Lister les services proposés avec des descriptions claires
+            </div>
+            <span class="check-cat">Offre</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Identifier 3 à 5 clients potentiels pour travailler gratuitement
+            </div>
+            <span class="check-cat">Clients</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Construire un portfolio avec des projets de démonstration
+            </div>
+            <span class="check-cat">Portfolio</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Ouvrir les profils réseaux sociaux (Instagram, LinkedIn…)
+            </div>
+            <span class="check-cat">Contenu</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Publier les 5 premiers posts de contenu créatif
+            </div>
+            <span class="check-cat">Contenu</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Lancer le site web officiel de NURIX STUDIO
+            </div>
+            <span class="check-cat">Web</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Obtenir les premiers retours / témoignages clients
+            </div>
+            <span class="check-cat">Réputation</span>
+          </div>
+          <div class="check-item" onclick="toggle(this)">
+            <div class="check-box"></div>
+            <div class="check-label">
+              Définir une grille tarifaire pour les services
+            </div>
+            <span class="check-cat">Business</span>
+          </div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-label">
+            <span>Progression</span>
+            <span id="progress-text">0 / 10 objectifs complétés</span>
+          </div>
+          <div class="progress-track">
+            <div
+              class="progress-fill"
+              id="progress-fill"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>NURIX STUDIO — Plan de lancement · 2026</footer>
+
+    <script>
+      function toggle(el) {
+        el.classList.toggle("done");
+        const box = el.querySelector(".check-box");
+        box.textContent = el.classList.contains("done") ? "✓" : "";
+        updateProgress();
+      }
+
+      function updateProgress() {
+        const items = document.querySelectorAll(".check-item");
+        const done = document.querySelectorAll(".check-item.done").length;
+        const pct = Math.round((done / items.length) * 100);
+        document.getElementById("progress-fill").style.width = pct + "%";
+        document.getElementById("progress-text").textContent =
+          done + " / " + items.length + " objectifs complétés";
+      }
+    </script>
+  </body>
+</html>
